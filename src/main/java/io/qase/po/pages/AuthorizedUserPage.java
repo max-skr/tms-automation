@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 public abstract class AuthorizedUserPage<T extends AuthorizedUserPage<T>> extends AbstractPage<T> {
 
     @FindBy(id = "user-menu")
-    private WebElement userMenuButton;
+    protected WebElement userMenuButton;
 
     @FindBy(css = ".user-menu-block")
     private WebElement userMenuElement;

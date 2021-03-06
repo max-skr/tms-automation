@@ -29,7 +29,7 @@ public class LoginPage extends AbstractPage<LoginPage> {
 
     @Override
     public boolean isLoaded() {
-        return ElementAction.isDisplayed(loginButton);
+        return super.isLoaded() && ElementAction.isDisplayed(loginButton);
     }
 
     public ProjectsPage login(UserData user) {
