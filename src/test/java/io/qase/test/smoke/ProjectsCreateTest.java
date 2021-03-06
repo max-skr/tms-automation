@@ -1,13 +1,13 @@
 package io.qase.test.smoke;
 
 import io.qase.data.AccountProvider;
-import io.qase.data.StringGenerator;
 import io.qase.data.dto.ProjectCreateData;
 import io.qase.data.dto.UserData;
 import io.qase.po.pages.LoginPage;
 import io.qase.po.pages.ProjectCreatePage;
 import io.qase.po.pages.ProjectsPage;
 import io.qase.utils.wait.WaitUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ProjectsCreateTest extends AbstractTest {
 
     private final String projectName = "TEST-" + UUID.randomUUID().toString();
-    private final String projectCode = StringGenerator.getRandomString(6).toUpperCase();
+    private final String projectCode = RandomStringUtils.randomAlphabetic(6).toUpperCase();
 
     @BeforeClass
     public void login() {
