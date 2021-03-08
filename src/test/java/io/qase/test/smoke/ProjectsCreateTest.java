@@ -1,24 +1,21 @@
 package io.qase.test.smoke;
 
 import io.qase.data.AccountProvider;
+import io.qase.data.DataProvider;
 import io.qase.data.dto.ProjectCreateData;
 import io.qase.data.dto.UserData;
 import io.qase.po.pages.LoginPage;
-import io.qase.po.pages.ProjectCreatePage;
-import io.qase.po.pages.ProjectsPage;
+import io.qase.po.pages.project.ProjectCreatePage;
+import io.qase.po.pages.project.ProjectsPage;
 import io.qase.utils.wait.WaitUtils;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ProjectsCreateTest extends AbstractTest {
 
-    private final String projectName = "TEST-" + UUID.randomUUID().toString();
-    private final String projectCode = RandomStringUtils.randomAlphabetic(6).toUpperCase();
+    private final ProjectCreateData projectData = DataProvider.getProjectCreateData();
 
     @BeforeClass
     public void login() {
@@ -35,33 +32,22 @@ public class ProjectsCreateTest extends AbstractTest {
 
     @Test
     public void testCreateProject() {
-        ProjectCreateData data = getCreationData();
-
         new ProjectCreatePage(driver).get()
-                .createProject(data);
+                .createProject(projectData);
         ProjectsPage projectsPage = new ProjectsPage(driver).get();
         WaitUtils.waitAsserted(() -> assertThat(projectsPage.getProjectNames())
                 .as("Created project not displayed")
-                .contains(projectName));
+                .contains(projectData.getName()));
     }
 
     @Test(dependsOnMethods = "testCreateProject")
     public void testDeleteProject() {
         ProjectsPage projectsPage = new ProjectsPage(driver).get()
-                .openDeleteProjectConfirmationPage(projectName)
+                .openDeleteProjectConfirmationPage(projectData.getName())
                 .deleteProject();
         assertThat(projectsPage.getProjectNames())
                 .as("Created project not displayed")
-                .doesNotContain(projectName);
+                .doesNotContain(projectData.getName());
     }
 
-    private ProjectCreateData getCreationData() {
-        ProjectCreateData data = new ProjectCreateData();
-        data.setName(projectName);
-        data.setCode(projectCode);
-        data.setPrivate(true);
-        data.setMembersAccessOption(ProjectCreateData.AccessOption.NO_MEMBERS);
-        data.setDescription("Test desc");
-        return data;
-    }
 }

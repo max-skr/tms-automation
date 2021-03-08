@@ -1,5 +1,6 @@
-package io.qase.po.pages;
+package io.qase.po.pages.project;
 
+import io.qase.po.pages.AuthorizedUserPage;
 import io.qase.utils.elements.ElementAction;
 import io.qase.utils.wait.WaitUtils;
 import org.openqa.selenium.By;
@@ -18,7 +19,7 @@ public class ProjectsPage extends AuthorizedUserPage<ProjectsPage> {
     @FindBy(css = ".project-row .defect-title")
     private List<WebElement> projectNamesElements;
 
-    @FindBy(css = ".dropdown-menu")
+    @FindBy(css = ".dropdown.show")
     private WebElement dropdownMenu;
 
     @FindBy(css = ".dropdown-menu .dropdown-item a[href $= 'delete']")

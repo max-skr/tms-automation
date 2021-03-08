@@ -1,6 +1,6 @@
 package io.qase.po.pages;
 
-import io.qase.po.components.UserMenuComponent;
+import io.qase.po.component.UserMenuComponent;
 import io.qase.utils.elements.ElementAction;
 import io.qase.utils.wait.WaitUtils;
 import org.openqa.selenium.WebDriver;

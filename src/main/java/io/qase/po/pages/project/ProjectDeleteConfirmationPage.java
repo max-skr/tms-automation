@@ -1,5 +1,6 @@
-package io.qase.po.pages;
+package io.qase.po.pages.project;
 
+import io.qase.po.pages.AuthorizedUserPage;
 import io.qase.utils.elements.ElementAction;
 import io.qase.utils.wait.WaitUtils;
 import org.openqa.selenium.WebDriver;

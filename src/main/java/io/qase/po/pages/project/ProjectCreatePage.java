@@ -1,7 +1,9 @@
-package io.qase.po.pages;
+package io.qase.po.pages.project;
 
 import io.qase.data.dto.ProjectCreateData;
 import io.qase.data.dto.ProjectCreateData.AccessOption;
+import io.qase.po.pages.AuthorizedUserPage;
+import io.qase.po.pages.repo.RepositoryPage;
 import io.qase.utils.elements.ElementAction;
 import io.qase.utils.wait.WaitUtils;
 import org.openqa.selenium.WebDriver;
@@ -56,7 +58,7 @@ public class ProjectCreatePage extends AuthorizedUserPage<ProjectCreatePage> {
         return "/project/create";
     }
 
-    public ProjectRepositoryPage createProject(ProjectCreateData data) {
+    public RepositoryPage createProject(ProjectCreateData data) {
         setText(projectNameField, data.getName());
         setText(projectCodeField, data.getCode());
         setText(projectDescriptionField, data.getDescription());
@@ -67,7 +69,7 @@ public class ProjectCreatePage extends AuthorizedUserPage<ProjectCreatePage> {
         }
         selectAccessOption(data.getMembersAccessOption());
         createProjectButton.click();
-        return WaitUtils.waitLoaded(new ProjectRepositoryPage(driver));
+        return WaitUtils.waitLoaded(new RepositoryPage(driver));
     }
 
     private void selectAccessOption(AccessOption accessOption) {

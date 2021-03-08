@@ -3,7 +3,7 @@ package io.qase.test.smoke;
 import io.qase.data.AccountProvider;
 import io.qase.data.dto.UserData;
 import io.qase.po.pages.LoginPage;
-import io.qase.po.pages.ProjectsPage;
+import io.qase.po.pages.project.ProjectsPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 

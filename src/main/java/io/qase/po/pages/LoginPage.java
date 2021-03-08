@@ -1,6 +1,7 @@
 package io.qase.po.pages;
 
 import io.qase.data.dto.UserData;
+import io.qase.po.pages.project.ProjectsPage;
 import io.qase.utils.elements.ElementAction;
 import io.qase.utils.wait.WaitUtils;
 import org.openqa.selenium.WebDriver;
